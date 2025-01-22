@@ -157,23 +157,42 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<p><img align="right" width="147" height="125" title="Lefthook logo"
+     src="./favicon.svg"></p>
 <p><strong>Lefthook</strong> is a Git hooks manager. This documentation provides the reference for installing, configuring and using the lefthook.</p>
-<p>Maybe you are looking for</p>
 <ul>
 <li>
-<p><strong><a href="./installation">Installation instructions</a></strong> to install lefthook to your system or just project.</p>
+<p><strong><a href="./installation">Installation instructions</a></strong> to install lefthook to your OS or project.</p>
 </li>
 <li>
 <p><strong><a href="./examples">Examples</a></strong> of lefthook common usage.</p>
 </li>
 <li>
-<p><strong><a href="./configuration">Configuration</a></strong> with details explanation of lefthook options.</p>
+<p><strong><a href="./configuration">Configuration</a></strong> with detailed explanation of lefthook options.</p>
 </li>
 </ul>
+<p><strong>Example:</strong> Run your linters on <code>pre-commit</code> hook and forget about the routine.</p>
+<pre><code class="language-yml"># lefthook.yml
+
+pre-commit:
+  parallel: true
+  jobs:
+    - run: yarn run stylelint --fix {staged_files}
+      glob: "*.css"
+      stage_fixed: true
+
+    - run: yarn run eslint --fix "{staged_files}"
+      glob:
+        - "*.ts"
+        - "*.js"
+        - "*.tsx"
+        - "*.jsx"
+      stage_fixed: true
+</code></pre>
 <hr />
 <a href="https://evilmartians.com/?utm_source=lefthook">
-<img src="https://evilmartians.com/badges/sponsored-by-evil-martians.svg" alt="Sponsored by Evil Martians" width="236" height="54"></a>
-<p>❓If you have a question or found a mistake in the documentation, please create a new <a href="https://github.com/evilmartians/lefthook/discussions/new/choose">discussion</a>. Small contributions help maintaining the quality of the project.</p>
+<img src="https://evilmartians.com/badges/sponsored-by-evil-martians.svg" alt="Sponsored by Evil Martians" width="100%" height="54"></a>
+<p>❓<em>If you have a question or found a mistake in the documentation, please create a new <a href="https://github.com/evilmartians/lefthook/discussions/new/choose">discussion</a>. Small contributions help maintaining the quality of the project.</em></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="install-lefthook"><a class="header" href="#install-lefthook">Install lefthook</a></h1>
 <p>Choose your fighter:</p>
 <ul>
@@ -234,7 +253,7 @@ yarn add -D @evilmartians/lefthook-installer
 <div style="break-before: page; page-break-before: always;"></div><h2 id="swift"><a class="header" href="#swift">Swift</a></h2>
 <p>You can find the Swift wrapper plugin <a href="https://github.com/csjones/lefthook-plugin">here</a>.</p>
 <p>Utilize lefthook in your Swift project using Swift Package Manager:</p>
-<pre><code class="language-swift">.package(url: "https://github.com/csjones/lefthook-plugin.git", exact: "1.10.9"),
+<pre><code class="language-swift">.package(url: "https://github.com/csjones/lefthook-plugin.git", exact: "1.10.10"),
 </code></pre>
 <p>Or, with <a href="https://github.com/yonaskolb/Mint">mint</a>:</p>
 <pre><code class="language-bash">mint run csjones/lefthook-plugin
@@ -1909,21 +1928,33 @@ pre-commit:
 <pre><code class="language-yml"># lefthook.yml
 
 pre-commit:
-  commands:
-    lint:
-      glob: "*.{js,ts,jsx,tsx}"
+  jobs:
+    - name: lint
       run: yarn eslint {staged_files}
+      glob: "*.{js,ts,jsx,tsx}"
 </code></pre>
+<blockquote>
+<p><strong>Note:</strong> from lefthook version <code>1.10.10</code> you can also provide a list of globs:</p>
+<pre><code class="language-yml"># lefthook.yml
+
+pre-commit:
+  jobs:
+    - run: yarn lint {staged_files}
+      glob:
+        - "*.ts"
+        - "*.js"
+</code></pre>
+</blockquote>
 <p><strong>Notes</strong></p>
 <p>For patterns that you can use see <a href="https://tldp.org/LDP/GNU-Linux-Tools-Summary/html/x11655.htm">this</a> reference. We use <a href="https://github.com/gobwas/glob">glob</a> library.</p>
 <p>If you've specified <code>glob</code> but don't have a files template in <a href="configuration/./run.html"><code>run</code></a> option, lefthook will check <code>{staged_files}</code> for <code>pre-commit</code> hook and <code>{push_files}</code> for <code>pre-push</code> hook and apply filtering. If no files left, the command will be skipped.</p>
 <pre><code class="language-yml"># lefthook.yml
 
 pre-commit:
-  commands:
-    lint:
-      glob: "*.js"
+  jobs:
+    - name: lint
       run: npm run lint # skipped if no .js files staged
+      glob: "*.js"
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="files"><a class="header" href="#files"><code>files</code></a></h2>
 <p>A custom git command for files or directories to be referenced in <code>{files}</code> template for <a href="configuration/./run.html"><code>run</code></a> setting.</p>
@@ -2511,21 +2542,33 @@ pre-commit:
 <pre><code class="language-yml"># lefthook.yml
 
 pre-commit:
-  commands:
-    lint:
-      glob: "*.{js,ts,jsx,tsx}"
+  jobs:
+    - name: lint
       run: yarn eslint {staged_files}
+      glob: "*.{js,ts,jsx,tsx}"
 </code></pre>
+<blockquote>
+<p><strong>Note:</strong> from lefthook version <code>1.10.10</code> you can also provide a list of globs:</p>
+<pre><code class="language-yml"># lefthook.yml
+
+pre-commit:
+  jobs:
+    - run: yarn lint {staged_files}
+      glob:
+        - "*.ts"
+        - "*.js"
+</code></pre>
+</blockquote>
 <p><strong>Notes</strong></p>
 <p>For patterns that you can use see <a href="https://tldp.org/LDP/GNU-Linux-Tools-Summary/html/x11655.htm">this</a> reference. We use <a href="https://github.com/gobwas/glob">glob</a> library.</p>
 <p>If you've specified <code>glob</code> but don't have a files template in <a href="configuration/./run.html"><code>run</code></a> option, lefthook will check <code>{staged_files}</code> for <code>pre-commit</code> hook and <code>{push_files}</code> for <code>pre-push</code> hook and apply filtering. If no files left, the command will be skipped.</p>
 <pre><code class="language-yml"># lefthook.yml
 
 pre-commit:
-  commands:
-    lint:
-      glob: "*.js"
+  jobs:
+    - name: lint
       run: npm run lint # skipped if no .js files staged
+      glob: "*.js"
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="files-1"><a class="header" href="#files-1"><code>files</code></a></h2>
 <p>A custom git command for files or directories to be referenced in <code>{files}</code> template for <a href="configuration/./run.html"><code>run</code></a> setting.</p>
