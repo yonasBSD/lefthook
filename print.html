@@ -259,7 +259,7 @@ end
 <div style="break-before: page; page-break-before: always;"></div><h2 id="swift"><a class="header" href="#swift">Swift</a></h2>
 <p>You can find the Swift wrapper plugin <a href="https://github.com/csjones/lefthook-plugin">here</a>.</p>
 <p>Utilize lefthook in your Swift project using Swift Package Manager:</p>
-<pre><code class="language-swift">.package(url: "https://github.com/csjones/lefthook-plugin.git", exact: "1.12.0"),
+<pre><code class="language-swift">.package(url: "https://github.com/csjones/lefthook-plugin.git", exact: "1.12.1"),
 </code></pre>
 <p>Or, with <a href="https://github.com/yonaskolb/Mint">mint</a>:</p>
 <pre><code class="language-bash">mint run csjones/lefthook-plugin
@@ -321,7 +321,7 @@ yay -S lefthook-bin
 <pre><code class="language-bash">mise use lefthook@latest
 </code></pre>
 <p><strong>Note</strong>: The mise plugin for lefthook is maintained by the community. While we appreciate their contribution, the lefthook team cannot provide direct support for mise-specific installation issues.</p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="manuall-installation-with-prebuilt-executable"><a class="header" href="#manuall-installation-with-prebuilt-executable">Manuall installation with prebuilt executable</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="manual-installation-with-prebuilt-executable"><a class="header" href="#manual-installation-with-prebuilt-executable">Manual installation with prebuilt executable</a></h2>
 <p>Download binaries from <a href="https://github.com/evilmartians/lefthook/releases/latest">latest release</a> and install manually.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="usage"><a class="header" href="#usage">Usage</a></h1>
 <ul>
@@ -515,6 +515,7 @@ CI=true pnpm install
 </blockquote>
 <h3 id="local-config"><a class="header" href="#local-config">Local config</a></h3>
 <p>Use <code>lefthook-local.yml</code> to overwrite or extend options from the main config. (Don't forget to add this file to <code>.gitignore</code>)</p>
+<p>You can also use <code>lefthook-local.yml</code> without a main config file. This is useful when you want to use lefthook locally without imposing it on your teammates.</p>
 <h3 id="disable-lefthook-in-ci"><a class="header" href="#disable-lefthook-in-ci">Disable lefthook in CI</a></h3>
 <p>When using NPM package <code>lefthook</code>, set <code>CI=true</code> in your CI (if it does not set it automatically) to prevent lefthook from installing hooks in the postinstall script.</p>
 <h3 id="enable-lefthook-in-ci"><a class="header" href="#enable-lefthook-in-ci">Enable lefthook in CI</a></h3>
@@ -631,6 +632,7 @@ SHA1=$3
 <p>If there are more than 1 file in the project, only one will be used, and you'll never know which one. So, please, use one format in a project.</p>
 <p>Filenames without the leading dot will also be looked up from the <a href="https://github.com/pi0/config-dir"><code>.config</code> subdirectory</a>.</p>
 <p>Lefthook also merges an extra config with the name <code>lefthook-local</code>. All supported formats can be applied to this <code>-local</code> config. If you name your main config with the leading dot, like <code>.lefthook.json</code>, the <code>-local</code> config also must be named with the leading dot: <code>.lefthook-local.json</code>.</p>
+<p>The <code>-local</code> config can be used without a main config file. This is useful when you want to use lefthook locally without imposing it on your teammates – just create a <code>lefthook-local.yml</code> file and add it to your global <code>.gitignore</code>.</p>
 <h2 id="options"><a class="header" href="#options">Options</a></h2>
 <ul>
 <li><a href="configuration/./assert_lefthook_installed.html"><code>assert_lefthook_installed</code></a></li>
