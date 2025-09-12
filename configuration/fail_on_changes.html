@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Swift - Lefthook Documentation</title>
+        <title>fail_on_changes - Lefthook Documentation</title>
 
 
         <!-- Custom HTML head -->
@@ -155,24 +155,33 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h2 id="swift"><a class="header" href="#swift">Swift</a></h2>
-<p>You can find the Swift wrapper plugin <a href="https://github.com/csjones/lefthook-plugin">here</a>.</p>
-<p>Utilize lefthook in your Swift project using Swift Package Manager:</p>
-<pre><code class="language-swift">.package(url: "https://github.com/csjones/lefthook-plugin.git", exact: "1.13.0"),
-</code></pre>
-<p>Or, with <a href="https://github.com/yonaskolb/Mint">mint</a>:</p>
-<pre><code class="language-bash">mint run csjones/lefthook-plugin
+                        <h1 id="fail_on_changes"><a class="header" href="#fail_on_changes">fail_on_changes</a></h1>
+<p>The behaviour of lefthook when files (tracked by git) are modified can set by modifying the <code>fail_on_changes</code> configuration parameter. The possible values are:</p>
+<ul>
+<li><code>never</code>: never exit with a non-zero status if files were modified (default).</li>
+<li><code>always</code>: always exit with a non-zero status if files were modified.</li>
+<li><code>ci</code>: exit with a non-zero status only when <code>CI</code> environment variable is set. This can be useful when combined with <code>stage_fixed</code> to ensure a frictionless devX locally, and a robust CI.</li>
+</ul>
+<pre><code class="language-yml"># lefthook.yml
+pre-commit:
+  parallel: true
+  fail_on_changes: "always"
+  commands:
+    lint:
+      run: yarn lint
+    test:
+      run: yarn test
 </code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../installation/node.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../configuration/follow.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../installation/go.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../configuration/exclude_tags.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -182,11 +191,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../installation/node.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../configuration/follow.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../installation/go.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../configuration/exclude_tags.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
