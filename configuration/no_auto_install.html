@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Swift - Lefthook Documentation</title>
+        <title>no_auto_install - Lefthook Documentation</title>
 
 
         <!-- Custom HTML head -->
@@ -155,24 +155,30 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h2 id="swift"><a class="header" href="#swift">Swift</a></h2>
-<p>You can find the Swift wrapper plugin <a href="https://github.com/csjones/lefthook-plugin">here</a>.</p>
-<p>Utilize lefthook in your Swift project using Swift Package Manager:</p>
-<pre><code class="language-swift">.package(url: "https://github.com/csjones/lefthook-plugin.git", exact: "2.0.11"),
-</code></pre>
-<p>Or, with <a href="https://github.com/yonaskolb/Mint">mint</a>:</p>
-<pre><code class="language-bash">mint run csjones/lefthook-plugin
+                        <h2 id="no_auto_install"><a class="header" href="#no_auto_install"><code>no_auto_install</code></a></h2>
+<p><strong>Default: <code>false</code></strong></p>
+<p>Disable automatic installation and synchronization of git hooks when running lefthook. By default, lefthook automatically installs and updates hooks when you run <code>lefthook run</code> if the configuration has changed. Setting this to <code>true</code> disables that behavior.</p>
+<p>This can also be controlled with the <code>--no-auto-install</code> option for the <code>lefthook run</code> command.</p>
+<p><strong>Example</strong></p>
+<pre><code class="language-yml"># lefthook.yml
+
+no_auto_install: true
+
+pre-commit:
+  commands:
+    lint:
+      run: npm run lint
 </code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../installation/node.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../configuration/min_version.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../installation/go.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../configuration/no_tty.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -182,11 +188,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../installation/node.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../configuration/min_version.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../installation/go.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../configuration/no_tty.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
