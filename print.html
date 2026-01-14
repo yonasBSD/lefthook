@@ -257,7 +257,7 @@ end
 <div style="break-before: page; page-break-before: always;"></div><h2 id="swift"><a class="header" href="#swift">Swift</a></h2>
 <p>You can find the Swift wrapper plugin <a href="https://github.com/csjones/lefthook-plugin">here</a>.</p>
 <p>Utilize lefthook in your Swift project using Swift Package Manager:</p>
-<pre><code class="language-swift">.package(url: "https://github.com/csjones/lefthook-plugin.git", exact: "2.0.14"),
+<pre><code class="language-swift">.package(url: "https://github.com/csjones/lefthook-plugin.git", exact: "2.0.15"),
 </code></pre>
 <p>Or, with <a href="https://github.com/yonaskolb/Mint">mint</a>:</p>
 <pre><code class="language-bash">mint run csjones/lefthook-plugin
@@ -267,7 +267,7 @@ end
 <ul>
 <li>as global package</li>
 </ul>
-<pre><code class="language-bash">go install github.com/evilmartians/lefthook/v2@v2.0.14
+<pre><code class="language-bash">go install github.com/evilmartians/lefthook/v2@v2.0.15
 </code></pre>
 <ul>
 <li>or as a go tool in your project</li>
@@ -968,7 +968,7 @@ $ lefthook install -f
 <li>Remote configs (<code>remotes</code>)</li>
 <li>Local overrides (<code>lefthook-local.yml</code>)</li>
 </ol>
-<p>This priority may be changed in the future. For convenience, if you use <code>remotes</code>, please don't configure any hooks.</p>
+<p>This priority may be changed in the future. For simplicity, try to keep jobs in remote settings independent from any other steps.</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="git_url"><a class="header" href="#git_url"><code>git_url</code></a></h2>
 <p>A URL to Git repository. It will be accessed with privileges of the machine lefthook runs on.</p>
 <p><strong>Example</strong></p>
