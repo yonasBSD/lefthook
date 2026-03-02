@@ -19,7 +19,7 @@
         window.DOCMD_ROOT = root;
         window.DOCMD_DEFAULT_MODE = "system";
     </script>
-    <title>only</title>
+    <title>setup</title>
     <link id="site-favicon" rel="icon" href="../../assets/favicon.svg?v=mm94maen">
     <link rel="stylesheet" href="../../assets/css/docmd-main.css?v=mm94maen">
     
@@ -35,14 +35,14 @@
     
     
 <meta name="description" content="Lefthook documentation.">
-<link rel="canonical" href="https://lefthook.dev/configuration/only/">
-<meta property="og:title" content="only : Lefthook">
+<link rel="canonical" href="https://lefthook.dev/configuration/setup/">
+<meta property="og:title" content="setup : Lefthook">
 <meta property="og:description" content="Lefthook documentation.">
-<meta property="og:url" content="https://lefthook.dev/configuration/only/">
+<meta property="og:url" content="https://lefthook.dev/configuration/setup/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://lefthook.dev/assets/lefthook.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="only">
+<meta name="twitter:title" content="setup">
 <meta name="twitter:description" content="Lefthook documentation.">
 <meta name="twitter:image" content="https://lefthook.dev/assets/lefthook.png">
 
@@ -876,9 +876,9 @@
       
     </li>
     
-    <li class="active" >
+    <li class="" >
       
-        <a href="../../configuration/only" class="active" >
+        <a href="../../configuration/only" class="" >
           
           <span class="nav-item-title">only</span>
           
@@ -902,9 +902,9 @@
       
     </li>
     
-    <li class="" >
+    <li class="active" >
       
-        <a href="../../configuration/setup" class="" >
+        <a href="../../configuration/setup" class="active" >
           
           <span class="nav-item-title">setup</span>
           
@@ -915,7 +915,7 @@
       
     </li>
     
-    <li class="active-parent collapsible expanded"  aria-expanded="true" >
+    <li class="collapsible"  aria-expanded="false" >
       
         <a href="../../configuration/jobs" class="" >
           
@@ -1096,9 +1096,9 @@
       
     </li>
     
-    <li class="active" >
+    <li class="" >
       
-        <a href="../../configuration/only" class="active" >
+        <a href="../../configuration/only" class="" >
           
           <span class="nav-item-title">only</span>
           
@@ -1256,7 +1256,7 @@
       
     </li>
     
-    <li class="active-parent collapsible expanded"  aria-expanded="true" >
+    <li class="collapsible"  aria-expanded="false" >
       
         <a href="../../configuration/Commands" class="" >
           
@@ -1312,9 +1312,9 @@
       
     </li>
     
-    <li class="active" >
+    <li class="" >
       
-        <a href="../../configuration/only" class="active" >
+        <a href="../../configuration/only" class="" >
           
           <span class="nav-item-title">only</span>
           
@@ -1485,7 +1485,7 @@
       
     </li>
     
-    <li class="active-parent collapsible expanded"  aria-expanded="true" >
+    <li class="collapsible"  aria-expanded="false" >
       
         <a href="../../configuration/Scripts" class="" >
           
@@ -1554,9 +1554,9 @@
       
     </li>
     
-    <li class="active" >
+    <li class="" >
       
-        <a href="../../configuration/only" class="active" >
+        <a href="../../configuration/only" class="" >
           
           <span class="nav-item-title">only</span>
           
@@ -2346,7 +2346,7 @@
 
                 </button>
                 
-                <span class="header-title">only</span>
+                <span class="header-title">setup</span>
             </div>
             
             <div class="header-right">
@@ -2436,38 +2436,26 @@
                 <div class="main-content">
                     
                     
-                    <h1 id="only"><code>only</code></h1>
-<p>You can force a command, script, or the whole hook to execute only in certain conditions. This option acts like the opposite of <a href="../skip"><code>skip</code></a>. It accepts the same values but skips execution only if the condition is not satisfied.</p>
+                    <h1 id="setup"><code>setup</code></h1>
+<div class="docmd-container callout callout-tip"><div class="callout-title">New feature</div><div class="callout-content">
+<p>Added in lefthook <code>2.1.2</code></p>
+</div></div>
+<p>A list of instructions to run before any job. Supports templates and Git args like in <a href="../run"><code>run</code></a>.</p>
 <div class="docmd-container callout callout-info"><div class="callout-title">Note</div><div class="callout-content">
-<p><code>skip</code> option takes precedence over <code>only</code> option, so if you have conflicting conditions the execution will be skipped.</p>
+<p>When merging configs (with <code>lefthook-local.yml</code> or files from <a href="../extends"><code>extends</code></a>) <code>setup</code> instructions get <strong>prepended</strong>. When there are multiple <code>extends</code>, they get <strong>appended</strong> in the same order as extend files are specified.</p>
 </div></div>
 <h4 id="example" class="docmd-heading"><a href="#example" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Example</h4>
-<p>Execute a hook only for <code>dev/*</code> branches.</p>
 <pre class="hljs"><code><span class="hljs-comment"># lefthook.yml</span>
 
 <span class="hljs-attr">pre-commit:</span>
-  <span class="hljs-attr">only:</span>
-    <span class="hljs-bullet">-</span> <span class="hljs-attr">ref:</span> <span class="hljs-string">dev/*</span>
-  <span class="hljs-attr">commands:</span>
-    <span class="hljs-attr">lint:</span>
-      <span class="hljs-attr">run:</span> <span class="hljs-string">yarn</span> <span class="hljs-string">lint</span>
-    <span class="hljs-attr">test:</span>
-      <span class="hljs-attr">run:</span> <span class="hljs-string">yarn</span> <span class="hljs-string">test</span>
-</code></pre>
-<p>When rebasing execute quick linter but skip usual linter and tests.</p>
-<pre class="hljs"><code><span class="hljs-comment"># lefthook.yml</span>
-
-<span class="hljs-attr">pre-commit:</span>
-  <span class="hljs-attr">commands:</span>
-    <span class="hljs-attr">lint:</span>
-      <span class="hljs-attr">skip:</span> <span class="hljs-string">rebase</span>
-      <span class="hljs-attr">run:</span> <span class="hljs-string">yarn</span> <span class="hljs-string">lint</span>
-    <span class="hljs-attr">test:</span>
-      <span class="hljs-attr">skip:</span> <span class="hljs-string">rebase</span>
-      <span class="hljs-attr">run:</span> <span class="hljs-string">yarn</span> <span class="hljs-string">test</span>
-    <span class="hljs-attr">lint-on-rebase:</span>
-      <span class="hljs-attr">only:</span> <span class="hljs-string">rebase</span>
-      <span class="hljs-attr">run:</span> <span class="hljs-string">yarn</span> <span class="hljs-string">lint-quickly</span>
+  <span class="hljs-attr">setup:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-attr">run:</span> <span class="hljs-string">|
+        if ! command -v golangci-lint &gt;/dev/null 2&gt;&amp;1; then
+          go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@v2.10.1
+        fi
+</span>  <span class="hljs-attr">jobs:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-attr">run:</span> <span class="hljs-string">golangci-lint</span> {<span class="hljs-string">staged_files</span>}
+      <span class="hljs-attr">glob:</span> <span class="hljs-string">&quot;*.go&quot;</span>
 </code></pre>
 
 
